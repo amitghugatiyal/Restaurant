@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+{% block class %}class="sub_page"{% endblock class %}
+{% block feedback_status %}active{% endblock feedback_status %}
+{% block index %}
+<!-- feedback section -->
+  <section class="book_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Book A Table
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container">
+            <form action="{% url 'feedback' %}" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div>
+                <input type="text" class="form-control" name="Name" placeholder="Your Name" />
+              </div>
+              <div>
+                <textarea name="Description" class="form-control" id="exanpleFormControlTextarea1" rows="3" required placeholder="Describe Your Experience"></textarea>
+              </div>
+              <div>
+                <select class="form-control nice-select wide" required name="Rating">
+                  <option value="" disabled selected>
+                    Please Give us Rating
+                  </option>
+                  <option value="1">
+                    1
+                  </option>
+                  <option value="2">
+                    2
+                  </option>
+                  <option value="3">
+                    3
+                  </option>
+                  <option value="4">
+                    4
+                  </option>
+                  <option value="5">
+                    5
+                  </option>
+                </select>
+              </div>
+              <div>
+                <input type="file" id="imageUpload" name="Image" accept="image/*" class="form-control">
+              </div>
+              <div class="btn_box">
+                <button>
+                  SUBMIT
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- end feedback section -->
+{% endblock index %}
